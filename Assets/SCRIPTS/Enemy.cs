@@ -19,12 +19,11 @@ namespace SanBlasVR
             audioSource = GetComponentInChildren<AudioSource>();
             target = GameObject.FindGameObjectWithTag("MainCamera").transform;
         }
-
-        // Update is called once per frame
         void Update()
         {
             transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
             Physics.Raycast(transform.position, target.position - transform.position, out RaycastHit hitInfo);
+            print(hitInfo.transform.name);
             if (hitInfo.transform.name != "Main Camera")
             {
                 animator.SetBool("Attacking", false);
